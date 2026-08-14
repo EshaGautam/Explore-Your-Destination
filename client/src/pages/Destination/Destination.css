@@ -1,0 +1,456 @@
+.destination-detail-page {
+  background-color: var(--bg);
+}
+
+.destination-top-nav {
+  padding-top: 32px;
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.btn-back:hover {
+  color: var(--accent);
+  transform: translateX(-4px);
+}
+
+/* Journey Stepper Progress */
+.journey-stepper-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 10px 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.journey-stepper-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.journey-steps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.journey-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.journey-step.completed {
+  color: var(--accent);
+  font-weight: 600;
+  opacity: 1;
+}
+
+.step-dot {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.journey-step-connector {
+  width: 20px;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.journey-step-connector.completed {
+  background-color: var(--accent);
+}
+
+/* Hero Profile */
+.profile-hero {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 0;
+  margin-bottom: 60px;
+}
+
+.hero-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 900px;
+}
+
+.profile-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.profile-num {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.profile-loc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.profile-title {
+  font-size: 4.8rem;
+  line-height: 1;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+  @media (max-width: 768px) {
+    font-size: 3.2rem;
+  }
+}
+
+.profile-desc {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 720px;
+}
+
+
+/* Main Grid Layout */
+.profile-main-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  padding-bottom: 100px;
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.profile-content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.profile-content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.detail-section-header {
+  margin-bottom: 32px;
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.detail-section-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Places grid */
+.places-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* Experiences list stack */
+.experiences-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.experience-detail-row-wrapper {
+  transition: var(--transition-fast);
+}
+
+.experience-detail-row-wrapper:hover {
+  transform: translateX(6px);
+}
+
+.experience-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.experience-detail-row-wrapper:last-child .experience-detail-row {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.exp-detail-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.experience-detail-row-wrapper:hover .exp-detail-icon-box {
+  background-color: var(--accent);
+}
+
+.experience-detail-row-wrapper:hover .exp-detail-icon-box .exp-icon {
+  color: white;
+}
+
+.exp-icon {
+  color: var(--accent);
+  transition: var(--transition-fast);
+}
+
+.exp-detail-text {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.exp-detail-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+
+/* Cuisine Badge Styling */
+.cuisines-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cuisine-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.cuisine-badge-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  background-color: var(--border-light);
+}
+
+.cuisine-icon {
+  color: var(--accent);
+}
+
+
+/* Right Columns Border Cards */
+.border-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.graph-trails-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 32px;
+}
+
+.showcase-trail-box {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.showcase-trail-box:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.showcase-trail-header {
+  margin-bottom: 20px;
+}
+
+.showcase-interest-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-light);
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-border);
+}
+
+
+/* Bottom Continuation Nodes Trail Map */
+.adventure-continuation-box {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.connected-nodes-trail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.adventure-node-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.adventure-node-card:hover {
+  background-color: var(--border-light);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.adventure-node-marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.node-compass {
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.adventure-node-card:hover .adventure-node-marker {
+  background-color: var(--accent);
+}
+
+.adventure-node-card:hover .node-compass {
+  color: white;
+  transform: rotate(45deg);
+}
+
+.adventure-node-label-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.adventure-node-label-group .node-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.adventure-node-label-group .node-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.adventure-trail-arrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trail-arrow-line {
+  width: 20px;
+  height: 1px;
+  background-color: var(--border);
+}
+
+.arrow-head {
+  color: var(--border);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.adventure-node-card:hover + .adventure-trail-arrow .trail-arrow-line,
+.adventure-node-card:hover + .adventure-trail-arrow .arrow-head {
+  background-color: var(--accent);
+  color: var(--accent);
+}
+
+.continuation-cta-row {
+  display: flex;
+  margin-top: 8px;
+}
+
+.no-connections-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 16px;
+}
+
+.profile-hero-actions {
+  margin-top: 24px;
+}

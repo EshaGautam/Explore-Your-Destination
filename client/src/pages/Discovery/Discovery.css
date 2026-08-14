@@ -1,0 +1,443 @@
+.discovery-page {
+  background-color: var(--bg);
+}
+
+.discover-hero {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 0 48px;
+}
+
+.discover-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.discover-title {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.discover-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.discover-tabs {
+  display: inline-flex;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 4px;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  background-color: var(--card-bg);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+
+/* Content Area */
+.discover-content-container {
+  min-height: 400px;
+}
+
+/* Interest discovery visual trails cards */
+.results-wrapper {
+  margin-top: 56px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.results-count-title {
+  font-size: 1.8rem;
+  margin-bottom: 36px;
+  font-family: var(--font-serif);
+}
+
+.results-count-title span {
+  color: var(--accent);
+}
+
+.interest-visual-trails-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.trail-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trail-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-border);
+}
+
+.trail-card-info {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border-light);
+  @media (max-width: 992px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 32px;
+  }
+}
+
+.trail-card-loc {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.trail-card-title {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+}
+
+.trail-card-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Why Matched Box (Consumer Friendly explanation box) */
+.why-matched-editorial-box {
+  background-color: var(--bg);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.why-matched-editorial-box h5 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-family: var(--font-sans);
+}
+
+.why-matched-editorial-box p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.trail-card-footer {
+  margin-top: auto;
+}
+
+.trail-card-viz {
+  padding: 48px;
+  background-color: #FAF9F6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  @media (max-width: 992px) {
+    padding: 32px;
+  }
+}
+
+.viz-box-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
+
+/* Connection Tab Grid styling */
+.connections-grid-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: start;
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.connections-form-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.form-title {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.form-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.pathfinder-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.form-select {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+.form-submit-btn {
+  justify-content: center;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+
+/* Path results panel */
+.connections-results-panel {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.path-placeholder-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.placeholder-icon {
+  color: var(--text-muted);
+  opacity: 0.25;
+  margin-bottom: 24px;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.path-placeholder-state h4 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.path-placeholder-state p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.error-path .placeholder-icon {
+  color: #DC2626;
+  opacity: 0.8;
+}
+
+/* Calculated travel trail box */
+.calculated-path-box {
+  padding: 48px;
+  animation: fadeIn 0.4s ease-out;
+  @media (max-width: 576px) {
+    padding: 24px;
+  }
+}
+
+.path-results-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.path-results-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+
+/* Pathfinder node visual trail */
+.horizontal-connection-trail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 8px;
+  margin-bottom: 48px;
+  padding: 24px;
+  background-color: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: inset var(--shadow-sm);
+}
+
+.path-city-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.path-city-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.city-node-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-node-name {
+  font-size: 0.95rem;
+}
+
+.path-link-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.arrow-head {
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+
+/* Path details footer details stats */
+.path-summary-details {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-serif);
+}
