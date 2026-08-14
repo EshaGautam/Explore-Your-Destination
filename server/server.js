@@ -71,6 +71,13 @@ app.use(express.json({ limit: "100kb" }));
 
 app.get("/api/health", async (req, res) => {
   try {
+    if (!driver) {
+      return res.status(503).json({
+        success: false,
+        message: "Database driver is not initialized. Please check environment variables.",
+      });
+    }
+
     const session = driver.session();
 
     const result = await session.run(

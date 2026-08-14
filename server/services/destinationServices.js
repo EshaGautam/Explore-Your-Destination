@@ -6,6 +6,9 @@ import {
 } from "../queries/destinationQueries.js";
 
 const executeQuery = async (query, params = {}) => {
+  if (!driver) {
+    throw new Error("Database driver is not initialized. Please configure CognoDB environment variables.");
+  }
   const session = driver.session();
 
   try {
