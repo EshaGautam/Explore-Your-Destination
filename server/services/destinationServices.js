@@ -3,6 +3,8 @@ import {
   GET_DESTINATIONS,
   GET_DESTINATION,
   GET_DESTINATION_PLACES,
+  GET_DESTINATION_CUISINES,
+  GET_DESTINATION_CONNECTIONS,
 } from "../queries/destinationQueries.js";
 
 const executeQuery = async (query, params = {}) => {
@@ -57,4 +59,14 @@ export const getDestinationPlaces = async (name) => {
     name: record.get("name"),
     type: record.get("type"),
   }));
+};
+
+export const getDestinationCuisines = async (name) => {
+  const records = await executeQuery(GET_DESTINATION_CUISINES, { name });
+  return records.map((record) => record.get("name"));
+};
+
+export const getDestinationConnections = async (name) => {
+  const records = await executeQuery(GET_DESTINATION_CONNECTIONS, { name });
+  return records.map((record) => record.get("name"));
 };

@@ -2,6 +2,8 @@ import {
   getDestinations,
   getDestination,
   getDestinationPlaces,
+  getDestinationCuisines,
+  getDestinationConnections,
 } from "../services/destinationServices.js";
 import { validateName } from "../utils/validation.js";
 
@@ -80,6 +82,60 @@ export const fetchDestinationPlaces = async (req, res) => {
     res.status(503).json({
       success: false,
       message: "Unable to load places",
+    });
+  }
+};
+
+export const fetchDestinationCuisines = async (req, res) => {
+  try {
+    const { name } = req.params;
+
+    if (!validateName(name)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid destination name parameter",
+      });
+    }
+
+    const cuisines = await getDestinationCuisines(name);
+
+    res.json({
+      success: true,
+      data: cuisines,
+    });
+  } catch (error) {
+    console.error("Failed to fetch cuisines:", error);
+
+    res.status(503).json({
+      success: false,
+      message: "Unable to load cuisines",
+    });
+  }
+};
+
+export const fetchDestinationConnections = async (req, res) => {
+  try {
+    const { name } = req.params;
+
+    if (!validateName(name)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid destination name parameter",
+      });
+    }
+
+    const connections = await getDestinationConnections(name);
+
+    res.json({
+      success: true,
+      data: connections,
+    });
+  } catch (error) {
+    console.error("Failed to fetch connections:", error);
+
+    res.status(503).json({
+      success: false,
+      message: "Unable to load connections",
     });
   }
 };

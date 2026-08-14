@@ -61,4 +61,18 @@ export const getDestinationsByInterest = async (
   return response.data.data;
 };
 
+export const getDestinationCuisines = async (name: string) => {
+  const response = await api.get<ApiResponse<string[]>>(
+    `/destinations/${encodeURIComponent(name)}/cuisines`
+  );
+  return response.data.data;
+};
+
+export const getDestinationConnections = async (name: string) => {
+  const response = await api.get<ApiResponse<string[]>>(
+    `/destinations/${encodeURIComponent(name)}/connections`
+  );
+  return response.data.data;
+};
+
 export default api;

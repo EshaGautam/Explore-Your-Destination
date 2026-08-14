@@ -8,44 +8,14 @@ import {
   getDestination,
   getDestinationPlaces,
   getDestinationInterests,
+  getDestinationCuisines,
+  getDestinationConnections,
 } from "../../services/api";
 import type { Destination as DestinationType, Place } from "../../types";
 import { MapPin, Compass, ArrowLeft, ChefHat, Link as LinkIcon } from "lucide-react";
 import "./Destination.css";
 
-// Frontend helper for Cuisines based on seed data
-const getCuisinesByDestination = (name: string): string[] => {
-  const cuisinesMap: Record<string, string[]> = {
-    Jaipur: ["Rajasthani", "Vegetarian", "Street Food"],
-    Delhi: ["North Indian", "Mughlai", "Street Food", "Vegetarian"],
-    Agra: ["Mughlai", "North Indian", "Street Food"],
-    Udaipur: ["Rajasthani", "Vegetarian"],
-    Goa: ["Goan", "Seafood", "Vegetarian"],
-    Mumbai: ["Maharashtrian", "Street Food", "Seafood", "Vegetarian"],
-    Varanasi: ["North Indian", "Street Food", "Vegetarian"],
-    Rishikesh: ["North Indian", "Vegetarian"],
-    Amritsar: ["Punjabi", "North Indian", "Vegetarian"],
-    Kochi: ["South Indian", "Seafood", "Vegetarian"],
-  };
-  return cuisinesMap[name] || ["Local Cuisine", "Street Food"];
-};
-
-// Frontend helper for Connections based on seed data
-const getConnectionsByDestination = (name: string): string[] => {
-  const connectionsMap: Record<string, string[]> = {
-    Delhi: ["Agra", "Jaipur", "Varanasi", "Amritsar", "Rishikesh"],
-    Agra: ["Delhi", "Jaipur", "Udaipur"],
-    Jaipur: ["Delhi", "Agra", "Udaipur"],
-    Udaipur: ["Agra", "Jaipur"],
-    Goa: ["Mumbai", "Kochi"],
-    Mumbai: ["Goa", "Kochi"],
-    Varanasi: ["Delhi", "Rishikesh"],
-    Rishikesh: ["Delhi", "Varanasi"],
-    Amritsar: ["Delhi"],
-    Kochi: ["Mumbai", "Goa"],
-  };
-  return connectionsMap[name] || [];
-};
+// Hardcoded helper functions replaced with dynamic graph endpoints
 
 // Helper for mapping place -> experience -> interest dynamically for the graph trail showcase
 const getShowcasePath = (_destName: string, interest: string, places: Place[]) => {
@@ -93,6 +63,8 @@ const Destination: React.FC = () => {
   const [destination, setDestination] = useState<DestinationType | null>(null);
   const [places, setPlaces] = useState<Place[]>([]);
   const [interests, setInterests] = useState<string[]>([]);
+  const [cuisines, setCuisines] = useState<string[]>([]);
+  const [connections, setConnections] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -110,13 +82,17 @@ const Destination: React.FC = () => {
       }
       setDestination(destData);
 
-      const [placesData, interestsData] = await Promise.all([
+      const [placesData, interestsData, cuisinesData, connectionsData] = await Promise.all([
         getDestinationPlaces(decodedName),
         getDestinationInterests(decodedName),
+        getDestinationCuisines(decodedName),
+        getDestinationConnections(decodedName),
       ]);
       
       setPlaces(placesData);
       setInterests(interestsData);
+      setCuisines(cuisinesData);
+      setConnections(connectionsData);
     } catch (err: any) {
       console.error(err);
       setError("Looks like the journey took a little detour. We couldn't load the destination details.");
@@ -148,8 +124,6 @@ const Destination: React.FC = () => {
   }
 
   const editorialBg = getEditorialBg(destination.name);
-  const cuisines = getCuisinesByDestination(destination.name);
-  const connections = getConnectionsByDestination(destination.name);
 
   return (
     <div className="destination-detail-page">

@@ -27,3 +27,19 @@ export const GET_DESTINATION_PLACES = `
     p.type AS type
   ORDER BY p.name
 `;
+
+export const GET_DESTINATION_CUISINES = `
+  MATCH (d:Destination {name: $name})
+        -[:POPULAR_FOR]->
+        (c:Cuisine)
+  RETURN c.name AS name
+  ORDER BY c.name
+`;
+
+export const GET_DESTINATION_CONNECTIONS = `
+  MATCH (d:Destination {name: $name})
+        -[:CONNECTED_TO]-
+        (neighbor:Destination)
+  RETURN neighbor.name AS name
+  ORDER BY neighbor.name
+`;
