@@ -3,6 +3,7 @@ import {
   getDestination,
   getDestinationPlaces,
 } from "../services/destinationServices.js";
+import { validateName } from "../utils/validation.js";
 
 export const fetchDestinations = async (req, res) => {
   try {
@@ -25,6 +26,13 @@ export const fetchDestinations = async (req, res) => {
 export const fetchDestination = async (req, res) => {
   try {
     const { name } = req.params;
+
+    if (!validateName(name)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid destination name parameter",
+      });
+    }
 
     const destination = await getDestination(name);
 
@@ -52,6 +60,13 @@ export const fetchDestination = async (req, res) => {
 export const fetchDestinationPlaces = async (req, res) => {
   try {
     const { name } = req.params;
+
+    if (!validateName(name)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid destination name parameter",
+      });
+    }
 
     const places = await getDestinationPlaces(name);
 

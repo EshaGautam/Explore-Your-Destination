@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import driver, {
   verifyDatabaseConnection,
 } from "./config/database.js";
@@ -12,8 +14,42 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+// Use Helmet for secure HTTP headers
+app.use(helmet());
+
+// Dynamic CORS configurations
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : ["http://localhost:5173", "http://127.0.0.1:5173"];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        return callback(new Error("CORS origin not allowed"), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
+
+// Rate Limiter to prevent brute force and DoS
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // Limit each IP to 200 requests per 15 minutes
+  message: {
+    success: false,
+    message: "Too many requests, please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api", limiter);
+
+// Request body size limit
+app.use(express.json({ limit: "100kb" }));
 
 app.get("/api/health", async (req, res) => {
   try {
