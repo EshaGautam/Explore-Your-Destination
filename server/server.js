@@ -25,11 +25,29 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
 app.use(
   cors({
     origin: (origin, callback) => {
+      // Allow requests with no origin (like postman, curl, or mobile apps)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        return callback(new Error("CORS origin not allowed"), false);
+
+      // Automatically allow local/development origins on any port
+      if (
+        origin.startsWith("http://localhost:") ||
+        origin.startsWith("http://127.0.0.1:") ||
+        origin.startsWith("http://192.168.")
+      ) {
+        return callback(null, true);
       }
-      return callback(null, true);
+
+      // Automatically allow Vercel deployment origins (production & preview URLs)
+      if (origin.endsWith(".vercel.app") || origin.endsWith(".now.sh")) {
+        return callback(null, true);
+      }
+
+      // Check configured allowed origins
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("CORS origin not allowed"), false);
     },
     credentials: true,
   })

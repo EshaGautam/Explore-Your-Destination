@@ -187,11 +187,11 @@ The application interface is styled as a modern digital travel journal.
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 * **Node.js** (v18 or higher)
-* **npm**
+* **yarn** or **npm**
 * A running **CognoDB / Neo4j** graph database instance.
 
 ### 1. Database & Server Setup
@@ -201,7 +201,7 @@ The application interface is styled as a modern digital travel journal.
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   yarn
    ```
 3. Configure the environment variables. Create a `.env` file in the `server` directory:
    ```env
@@ -212,15 +212,15 @@ The application interface is styled as a modern digital travel journal.
    ```
 4. Run the database setup script to establish unique constraints:
    ```bash
-   npm run setup-db
+   yarn setup-db
    ```
 5. Seed the graph database with destinations, places, experiences, cuisines, and travel paths:
    ```bash
-   npm run seed
+   yarn seed
    ```
 6. Start the development backend:
    ```bash
-   npm run dev
+   yarn dev
    ```
 
 ### 2. Frontend Client Setup
@@ -230,7 +230,7 @@ The application interface is styled as a modern digital travel journal.
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   yarn
    ```
 3. Configure the environment variables. Create a `.env` file in the `client` directory:
    ```env
@@ -239,6 +239,6 @@ The application interface is styled as a modern digital travel journal.
    ```
 4. Start the Vite development server:
    ```bash
-   npm run dev
+   yarn dev
    ```
 5. Open your browser and navigate to `http://localhost:5173`.
