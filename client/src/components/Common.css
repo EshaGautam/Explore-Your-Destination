@@ -1,0 +1,249 @@
+.skeleton-container {
+  width: 100%;
+}
+
+.card-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.skeleton-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 280px;
+}
+
+.skeleton-card-image {
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-card-title {
+  height: 24px;
+  width: 60%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-card-text {
+  height: 60px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-card-link {
+  height: 20px;
+  width: 30%;
+  margin-top: auto;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.detail-skeleton {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skeleton-title {
+  height: 48px;
+  width: 40%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-subtitle {
+  height: 24px;
+  width: 25%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.skeleton-card-large {
+  height: 400px;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-lg);
+}
+
+.list-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton-item {
+  height: 48px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--border-light) 25%, var(--border) 50%, var(--border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* States styling */
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.state-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.state-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.error-icon {
+  background-color: #FDF2F2;
+  color: #DC2626;
+}
+
+.empty-icon {
+  background-color: var(--border-light);
+  color: var(--text-muted);
+}
+
+.state-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.state-message {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.state-btn {
+  padding: 12px 24px;
+}
+
+/* Gamified Adventure Loader */
+.adventure-loading-wrapper {
+  width: 100%;
+}
+
+.adventure-loading-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 32px auto;
+  text-align: center;
+  max-width: 320px;
+}
+
+.loading-adventure-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.adventure-trail-loader {
+  position: relative;
+  width: 160px;
+  height: 6px;
+}
+
+.loader-trail-line {
+  position: absolute;
+  top: 2.5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border);
+  border-radius: 1px;
+}
+
+.loader-trail-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+.animate-dot-move {
+  animation: dotTravel 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes dotTravel {
+  0% {
+    left: 0;
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    left: 100%;
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+}
