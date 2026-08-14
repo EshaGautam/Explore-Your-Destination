@@ -96,19 +96,25 @@ app.get("/api/health", async (req, res) => {
 app.use("/api/destinations", destinationRoutes);
 app.use("/api/discover", discoveryRoutes);
 
+app.get("/health", (req, res) => {
+  res.json({
+    success: true,
+    message: "Explore Your Destination API is running",
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
-  try {
-    await verifyDatabaseConnection();
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+    // Asynchronously verify connection to prevent boot crashes when DB is sleeping
+    verifyDatabaseConnection().catch((error) => {
+      console.error("⚠️ Failed to connect to CognoDB on startup:", error.message);
+      console.log("ℹ️ Server remains online to serve static routes and health checks.");
     });
-  } catch (error) {
-    console.error("Failed to connect to CognoDB:", error.message);
-    process.exit(1);
-  }
+  });
 };
 
 startServer();

@@ -29,6 +29,12 @@ const driver = neo4j.driver(
 );
 
 export const verifyDatabaseConnection = async () => {
+  console.log("🔍 Checking CognoDB environment configuration presence...");
+  console.log({
+    uriPresent: !!process.env.COGNODB_URI,
+    usernamePresent: !!process.env.COGNODB_USERNAME,
+    passwordPresent: !!process.env.COGNODB_PASSWORD
+  });
   await driver.verifyConnectivity();
   console.log("Connected to CognoDB successfully");
 };
