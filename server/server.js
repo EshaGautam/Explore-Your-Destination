@@ -5,6 +5,9 @@ import driver, {
   verifyDatabaseConnection,
 } from "./config/database.js";
 
+import destinationRoutes from "./routes/destinationRoutes.js";
+import discoveryRoutes from "./routes/discoveryRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -35,6 +38,9 @@ app.get("/api/health", async (req, res) => {
     });
   }
 });
+
+app.use("/api/destinations", destinationRoutes);
+app.use("/api/discover", discoveryRoutes);
 
 const PORT = process.env.PORT || 5000;
 
