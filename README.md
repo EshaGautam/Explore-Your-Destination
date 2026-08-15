@@ -2,15 +2,6 @@
 
 Discover destinations, places, and experiences through the connections that make every journey interesting.
 
-[![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](#)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](#)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)](#)
-[![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)](#)
-[![CognoDB](https://img.shields.io/badge/CognoDB-Graph-8B7CF6?style=flat)](#)
-[![Neo4j Driver](https://img.shields.io/badge/Neo4j_Driver-008CC1?style=flat&logo=neo4j&logoColor=white)](#)
-
----
-
 ## Overview
 
 Travel discovery is often organized around isolated destination listings and dry search filters. **Explore Your Destination** takes a different approach: it is a consumer travel discovery product that organizes travel information as an interconnected journey. By linking cities with local landmarks, culinary profiles, travel interests, and neighboring stopovers, the application guides users through an intuitive trail of discovery.
@@ -145,6 +136,39 @@ MATCH path = (d:Destination {name: $destination})
              -[:HAS_PLACE|OFFERS|SUITABLE_FOR*1..3]-(node)
 RETURN path
 LIMIT 100
+```
+
+### 4. Fetching Destination Cuisines
+Retrieves all regional cuisines associated with a destination node:
+```cypher
+MATCH (d:Destination {name: $name})
+      -[:POPULAR_FOR]->(c:Cuisine)
+RETURN c.name AS name
+ORDER BY c.name
+```
+
+### 5. Fetching Connected Stopovers (Travel Loop)
+Retrieves neighboring destinations connected physically via undirected travel links:
+```cypher
+MATCH (d:Destination {name: $name})
+      -[:CONNECTED_TO]-(neighbor:Destination)
+RETURN neighbor.name AS name
+ORDER BY neighbor.name
+```
+
+### 6. Backend-Driven Case-Insensitive Search
+Performs a scalable case-insensitive search filtering cities by name, state, or country on the database layer:
+```cypher
+MATCH (d:Destination)
+WHERE toLower(d.name) CONTAINS toLower($search) 
+   OR toLower(d.state) CONTAINS toLower($search) 
+   OR toLower(d.country) CONTAINS toLower($search)
+RETURN
+  d.name AS name,
+  d.state AS state,
+  d.country AS country,
+  d.description AS description
+ORDER BY d.name
 ```
 
 ---
