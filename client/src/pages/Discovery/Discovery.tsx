@@ -271,7 +271,7 @@ const Discovery: React.FC = () => {
             <div className="section-header text-center">
               <h2 className="detail-section-title">What's your vibe?</h2>
             </div>
-            
+
             <InterestSelector
               selectedInterest={selectedInterest}
               onSelectInterest={handleSelectInterest}
@@ -307,13 +307,13 @@ const Discovery: React.FC = () => {
                             </span>
                             <h3 className="trail-card-title">{dest.name}</h3>
                             <p className="trail-card-desc">{dest.description}</p>
-                            
+
                             {/* Why this matched explanation box */}
                             <div className="why-matched-editorial-box">
                               <h5>Why {dest.name}?</h5>
                               <p>{whyReason}</p>
                             </div>
-                            
+
                             <div className="trail-card-footer">
                               <Link
                                 to={`/destination/${encodeURIComponent(dest.name)}`}
