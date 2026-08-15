@@ -12,9 +12,12 @@ const api = axios.create({
   },
 });
 
-export const getDestinations = async () => {
+export const getDestinations = async (search?: string) => {
   const response = await api.get<ApiResponse<Destination[]>>(
-    "/destinations"
+    "/destinations",
+    {
+      params: search ? { search } : {},
+    }
   );
 
   return response.data.data;

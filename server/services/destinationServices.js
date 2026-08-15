@@ -22,7 +22,29 @@ const executeQuery = async (query, params = {}) => {
   }
 };
 
-export const getDestinations = async () => {
+export const getDestinations = async (search = "") => {
+  if (search) {
+    const query = `
+      MATCH (d:Destination)
+      WHERE toLower(d.name) CONTAINS toLower($search) 
+         OR toLower(d.state) CONTAINS toLower($search) 
+         OR toLower(d.country) CONTAINS toLower($search)
+      RETURN
+        d.name AS name,
+        d.state AS state,
+        d.country AS country,
+        d.description AS description
+      ORDER BY d.name
+    `;
+    const records = await executeQuery(query, { search });
+    return records.map((record) => ({
+      name: record.get("name"),
+      state: record.get("state"),
+      country: record.get("country"),
+      description: record.get("description"),
+    }));
+  }
+
   const records = await executeQuery(GET_DESTINATIONS);
 
   return records.map((record) => ({

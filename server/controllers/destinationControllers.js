@@ -9,7 +9,16 @@ import { validateName } from "../utils/validation.js";
 
 export const fetchDestinations = async (req, res) => {
   try {
-    const destinations = await getDestinations();
+    const { search } = req.query;
+
+    if (search && search.length > 50) {
+      return res.status(400).json({
+        success: false,
+        message: "Search query parameter is too long",
+      });
+    }
+
+    const destinations = await getDestinations(search || "");
 
     res.json({
       success: true,

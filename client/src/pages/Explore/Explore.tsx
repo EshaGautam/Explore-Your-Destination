@@ -32,11 +32,11 @@ const Explore: React.FC = () => {
   const destinationsRef = useRef<HTMLDivElement>(null);
   const interestsRef = useRef<HTMLDivElement>(null);
 
-  const loadInitialData = async () => {
+  const loadData = async (search?: string) => {
     setLoadingDestinations(true);
     setError(null);
     try {
-      const data = await getDestinations();
+      const data = await getDestinations(search);
       setDestinations(data);
     } catch (err: any) {
       console.error(err);
@@ -47,8 +47,12 @@ const Explore: React.FC = () => {
   };
 
   useEffect(() => {
-    loadInitialData();
-  }, []);
+    const delayDebounceFn = setTimeout(() => {
+      loadData(searchQuery);
+    }, 300); // 300ms debounce delay
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
 
   const handleSelectInterest = async (interest: string | null) => {
     setSelectedInterest(interest);
@@ -73,13 +77,6 @@ const Explore: React.FC = () => {
       elementRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
-  // Filter destinations based on search query
-  const filteredDestinations = destinations.filter((dest) =>
-    dest.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    dest.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    dest.country.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="explore-page">
@@ -277,8 +274,8 @@ const Explore: React.FC = () => {
           {loadingDestinations ? (
             <LoadingState type="card" count={3} />
           ) : error ? (
-            <ErrorState message={error} onRetry={loadInitialData} />
-          ) : filteredDestinations.length === 0 ? (
+            <ErrorState message={error} onRetry={() => loadData(searchQuery)} />
+          ) : destinations.length === 0 ? (
             <EmptyState
               title="We couldn't find that place"
               message="Try searching for another destination."
@@ -287,7 +284,7 @@ const Explore: React.FC = () => {
             />
           ) : (
             <div className="editorial-grid">
-              {filteredDestinations.map((dest, idx) => (
+              {destinations.map((dest, idx) => (
                 <DestinationCard key={dest.name} destination={dest} index={idx} />
               ))}
             </div>
