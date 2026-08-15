@@ -44,8 +44,22 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  @media (max-width: 768px) {
-    display: none; /* Mobile view can hide the standard navigation list for a cleaner UI, or we can collapse it */
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    position: static;
+  }
+  .header-container {
+    flex-direction: column;
+    height: auto;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+  .header-nav {
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
   }
 }
 

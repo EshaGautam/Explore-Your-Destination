@@ -12,6 +12,14 @@
   gap: 20px;
 }
 
+@media (max-width: 768px) {
+  .destination-top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
 .btn-back {
   display: inline-flex;
   align-items: center;
@@ -37,6 +45,14 @@
   padding: 10px 24px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  @media (max-width: 768px) {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .journey-stepper-title {
@@ -127,6 +143,9 @@
   letter-spacing: -0.03em;
   @media (max-width: 768px) {
     font-size: 3.2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
   }
 }
 

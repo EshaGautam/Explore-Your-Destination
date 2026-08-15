@@ -38,6 +38,14 @@
   padding: 4px;
 }
 
+@media (max-width: 576px) {
+  .discover-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 .tab-btn {
   display: flex;
   align-items: center;
@@ -48,6 +56,15 @@
   border-radius: 4px;
   color: var(--text-muted);
   transition: var(--transition-fast);
+}
+
+@media (max-width: 576px) {
+  .tab-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 12px;
+  }
 }
 
 .tab-btn:hover {
